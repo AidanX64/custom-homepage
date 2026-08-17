@@ -27,35 +27,70 @@ export const DEFAULT_LINKS: LinkItem[] = [
     title: "TypeScript",
     url: "https://www.typescriptlang.org",
   },
+  { id: "vite", title: "Vite", url: "https://vite.dev" },
+  { id: "anthropic", title: "Anthropic", url: "https://anthropic.com" },
+  { id: "openai", title: "OpenAI", url: "https://openai.com" },
+  { id: "t3gg", title: "t3.gg", url: "https://t3.gg" },
+  { id: "omarchy", title: "Omarchy", url: "https://omarchy.org" },
+  { id: "smukx", title: "Smukx", url: "https://git.smukx.site/explore/repos" },
+  { id: "massgrave", title: "massgrave", url: "https://massgrave.dev" },
 ]
 
 export const DEFAULT_COMMANDS: CommandItem[] = [
   {
-    id: "next-app",
-    label: "Next.js app",
-    command: "bun create next-app@latest",
+    id: "shadcn-vite",
+    label: "Vite",
+    command: "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template vite",
   },
   {
-    id: "vite-react",
-    label: "Vite + React (TS)",
-    command: "bun create vite react-ts",
-  },
-  {
-    id: "shadcn-init-monorepo",
-    label: "Set up shadcn-init-monorepo",
+    id: "shadcn-vite-monorepo",
+    label: "Vite (monorepo)",
     command:
       "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template vite --monorepo",
   },
   {
-    id: "shadcn-init",
-    label: "Set up shadcn/ui",
-    command: "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template vite",
+    id: "shadcn-next",
+    label: "Next.js",
+    command: "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template next",
+  },
+  {
+    id: "shadcn-next-monorepo",
+    label: "Next.js (monorepo)",
+    command:
+      "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template next --monorepo",
+  },
+  {
+    id: "shadcn-astro",
+    label: "Astro",
+    command: "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template astro",
+  },
+  {
+    id: "shadcn-astro-monorepo",
+    label: "Astro (monorepo)",
+    command:
+      "bunx --bun shadcn@latest init --preset b5vnpT7Kc --template astro --monorepo",
+  },
+  {
+    id: "t3-app",
+    label: "T3 app",
+    command: "bun create t3-app@latest",
+  },
+  {
+    id: "shadcn-apply",
+    label: "Apply shadcn preset",
+    command: "bunx --bun shadcn@latest apply --preset b5vnpT7Kc",
+  },
+  {
+    id: "massgrave",
+    label: "MAS",
+    command: "irm https://get.activated.win | iex",
+  },
+  {
+    id: "winscript",
+    label: "WinScript",
+    command: 'irm "https://winscript.cc/irm" | iex',
   },
 ]
-
-export function newId() {
-  return Math.random().toString(36).slice(2, 10)
-}
 
 export function faviconSources(url: string): string[] {
   try {

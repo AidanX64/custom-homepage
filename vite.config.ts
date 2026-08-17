@@ -13,7 +13,10 @@ export default defineConfig({
     // Firefox blocks file:// pages from fetching ANY second local file —
     // not just ES modules, SystemJS hit the same wall. Inlining JS/CSS
     // straight into index.html means there's nothing left to fetch.
-    viteSingleFile({ useRecommendedBuildConfig: true, removeViteModuleLoader: true }),
+    viteSingleFile({
+      useRecommendedBuildConfig: true,
+      removeViteModuleLoader: true,
+    }),
   ],
   resolve: {
     alias: {

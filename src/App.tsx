@@ -1,15 +1,8 @@
 import { Clock } from "@/components/clock"
 import { CommandSnippets } from "@/components/command-snippets"
 import { NewsFeed } from "@/components/news-feed"
-import { SettingsDialog } from "@/components/settings-dialog"
 import { SpeedDial } from "@/components/speed-dial"
-import {
-  DEFAULT_COMMANDS,
-  DEFAULT_LINKS,
-  type CommandItem,
-  type LinkItem,
-} from "@/lib/data"
-import { useLocalStorage } from "@/lib/storage"
+import { DEFAULT_COMMANDS, DEFAULT_LINKS } from "@/lib/data"
 
 function SectionHeading({ children }: { children: string }) {
   return (
@@ -20,15 +13,6 @@ function SectionHeading({ children }: { children: string }) {
 }
 
 export function App() {
-  const [links, setLinks] = useLocalStorage<LinkItem[]>(
-    "akkit.links",
-    DEFAULT_LINKS
-  )
-  const [commands, setCommands] = useLocalStorage<CommandItem[]>(
-    "akkit.commands",
-    DEFAULT_COMMANDS
-  )
-
   return (
     <div className="min-h-svh bg-linear-to-b from-primary/5 to-background text-foreground">
       <header className="mx-auto flex w-full max-w-3xl items-start justify-between px-6 pt-8">
@@ -38,22 +22,12 @@ export function App() {
           </h1>
           <p className="text-sm text-muted-foreground">your web home</p>
         </div>
-        <div className="flex items-start gap-3">
-          <Clock />
-          <SettingsDialog
-            links={links}
-            setLinks={setLinks}
-            commands={commands}
-            setCommands={setCommands}
-            defaultLinks={DEFAULT_LINKS}
-            defaultCommands={DEFAULT_COMMANDS}
-          />
-        </div>
+        <Clock />
       </header>
       <main className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-6 py-8">
         <section className="flex flex-col gap-3">
           <SectionHeading>Links</SectionHeading>
-          <SpeedDial links={links} />
+          <SpeedDial links={DEFAULT_LINKS} />
         </section>
         <section className="flex flex-col gap-3">
           <SectionHeading>News</SectionHeading>
@@ -61,7 +35,7 @@ export function App() {
         </section>
         <section className="flex flex-col gap-3">
           <SectionHeading>Commands</SectionHeading>
-          <CommandSnippets commands={commands} />
+          <CommandSnippets commands={DEFAULT_COMMANDS} />
         </section>
       </main>
     </div>
